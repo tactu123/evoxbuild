@@ -1,6 +1,5 @@
 #!/bin/bash
-cd /tmp/rom # Depends on where source got synced
-rm -rf .repo
+cd /tmp/rom/.repo/rom # Depends on where source got synced
 
 # Normal build steps
 . build/env*
