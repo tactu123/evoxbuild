@@ -1,6 +1,6 @@
 #!/bin/bash
-sudo apt upgrade
-sudo apt install wget
+sudo apt upgrade -y
+sudo apt install wget -y
 MANIFEST=https://github.com/Palladium-OS/platform_manifest.git
 BRANCH=11
 mkdir -p /tmp/rom
