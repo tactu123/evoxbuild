@@ -3,8 +3,8 @@
 mkdir -p /tmp/rom
 cd /tmp/rom
 
-sudo apt install jq
-sudo apt install wget
+sudo apt install jq -y
+sudo apt install wget -y
 MANIFEST=https://github.com/Palladium-OS/platform_manifest.git
 BRANCH=11
 
