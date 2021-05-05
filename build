@@ -19,7 +19,7 @@ make api-stubs-docs || echo no problem, we need ccache
 make system-api-stubs-docs || echo no problem we need ccache
 make test-api-stubs-docs || echo no problem, we need ccache
 mka palladium -j10 & # dont remove that '&'
-sleep 80m # we need more time for uploading ccache
+sleep 70m # we need more time for uploading ccache
 kill %1
 ccache -s
 #and dont use below codes for first 1 or 2 times, to get ccache uploaded,
