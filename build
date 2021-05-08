@@ -26,15 +26,15 @@ ccache -z # Clear old stats, so monitor script will provide real ccache statisti
 
 
 # upload function for uploading rom zip file! I don't want unwanted builds in my google drive haha!
-#up(){
-	#curl --upload-file $1 https://transfer.sh/$(basename $1); echo
+up(){
+	curl --upload-file $1 https://transfer.sh/$(basename $1); echo
 	# 14 days, 10 GB limit
-#}
+}
 
 # It's recommended to use google drive(rclone) as upload solution for coping with the time limit. Un-comment next 3 lines to upload with rclone in drive. Also change apon and junk according to your config name, uploading folder of drive
-up(){
-	time rclone copy $1 drx:platina -P # apon is my rclone config name, 
-}
+#up(){
+	#time rclone copy $1 drx:platina -P # apon is my rclone config name, 
+#}
 
 tg(){
 	bot_api=1602913756:AAHEmD1b44yfi06YuAT-VR2cTCaTRx9nmt0 # Your tg bot api, dont use my one haha, it's better to encrypt bot api too.
