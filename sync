@@ -1,10 +1,13 @@
 #!/bin/bash
+sudo apt install wget
+MANIFEST=https://github.com/Project-Fluid/manifest.git
+BRANCH=fluid-11
 
 mkdir -p /tmp/rom
 cd /tmp/rom
 
 # Repo init command, that -device,-mips,-darwin,-notdefault part will save you more time and storage to sync, add more according to your rom and choice.Optimization is welcomed! Let's make it quit, and with depth=1 so that no unnecessary things.
-repo init --no-repo-verify --depth=1 -u https://github.com/Project-Fluid/manifest.git -b fluid-11 -g default,-device,-mips,-darwin,-notdefault
+repo init --no-repo-verify --depth=1 -u "$MANIFEST" -b "$BRANCH" -g default,-device,-mips,-darwin,-notdefault
 git config --global user.name "D4rkKnight21"
 git config --global user.email "yusuff8621@gmail.com"
 
@@ -12,7 +15,7 @@ git config --global user.email "yusuff8621@gmail.com"
 repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j$(nproc --all) || repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j8
 
 # Clone local manifest! So that no need to manually git clone repos or change hals, you can use normal git clone or rm and re clone, they will cost little more time, and you may get timeout! Let's make it quit and depth=1 too.
-git clone https://github.com/D4rkKnight21/android_device_xiaomi_platina.git -b fluid --depth=1 device/xiaomi/platina
-git clone https://github.com/D4rkKnight21/android_device_xiaomi_sdm660-common.git -b arrow --depth=1 device/xiaomi/sdm660-common
-git clone https://github.com/D4rkKnight21/UghTea.git -b hmp  --depth=1 kernel/xiaomi/sdm660
+git clone https://github.com/D4rkKnight21/device_xiaomi_platina.git -b fluid --depth=1 device/xiaomi/platina
+git clone https://github.com/LMichael1/device_xiaomi_sdm660-common.git -b pixel --depth=1 device/xiaomi/sdm660-common
+git clone https://github.com/D4rkKnight21/UghTea.git -b eas  --depth=1 kernel/xiaomi/sdm660
 git clone https://github.com/D4rkKnight21/vendor_platina -b 11 --depth=1 vendor/xiaomi
