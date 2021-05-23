@@ -3,6 +3,7 @@ cd /tmp/rom # Depends on where source got synced
 
 # Normal build steps
 . build/envsetup.sh
+export KBUILD_BUILD_USER="D4rkKnight21"; export KBUILD_BUILD_HOST="cirrus-ci-builder"
 export SELINUX_NEVER_ALLOW=true
 lunch fluid_platina-userdebug
 export SKIP_API_CHECKS=true
