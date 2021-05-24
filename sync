@@ -17,7 +17,7 @@ repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync 
 
 # clone local manifest
 git clone https://github.com/D4rkKnight21/device_xiaomi_platina.git -b fluid --depth=1 device/xiaomi/platina
-git clone https://github.com/D4rkKnight21/device_xiaomi_sdm660-common.git -b 11 --depth=1 device/xiaomi/sdm660-common
+git clone https://github.com/D4rkKnight21/device_xiaomi_sdm660-common.git -b 11-eas --depth=1 device/xiaomi/sdm660-common
 git clone https://github.com/D4rkKnight21/UghTea.git -b eas --depth=1 kernel/xiaomi/sdm660
 git clone https://github.com/Kota-Gaplek-Project/vendor_platina.git -b 11 --depth=1 vendor/xiaomi
 git clone https://github.com/kdrag0n/proton-clang.git -b master --depth=1 prebuilts/clang/host/linux-x86/clang-proton
