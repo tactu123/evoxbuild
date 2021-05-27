@@ -6,6 +6,7 @@ cd /tmp/rom # Depends on where source got synced
 export SELINUX_NEVER_ALLOW=true
 lunch fluid_platina-userdebug
 export SKIP_API_CHECKS=true
+export SKIP_API_CHECKS=true
 export CCACHE_DIR=/tmp/ccache
 export CCACHE_EXEC=$(which ccache)
 export USE_CCACHE=1
@@ -14,9 +15,10 @@ ccache -o compression=true # Will save times and data to download and upload cca
 ccache -z # Clear old stats, so monitor script will provide real ccache statistics
 
 # Next 8 lines should be run first to collect ccache and then upload, after doning it 1 or 2 times, our ccache will help to build without these 8 lines.
-#make api-stubs-docs || echo no problem, we need ccache
-#make system-api-stubs-docs || echo no problem we need ccache
-#make test-api-stubs-docs || echo no problem, we need ccache
+#make api-stubs-docs || echo no problem
+#make hiddenapi-lists-docs || echo no problem
+#make system-api-stubs-docs || echo no problem
+#make test-api-stubs-docs || echo no problem
 #mka bacon -j10 & # dont remove that '&'
 #sleep 70m # we need more time for uploading ccache
 #kill %1
@@ -48,6 +50,7 @@ id=1310272071 # Your telegram id
 
 # Let's compile by parts! Coz of ram issue!
 make api-stubs-docs || echo no problem
+make hiddenapi-lists-docs || echo no problem
 make system-api-stubs-docs || echo no problem
 make test-api-stubs-docs || echo no problem
 
