@@ -1,5 +1,5 @@
-env: # Environment variables to pass to all tasks
-    CIRRUS_CLONE_DEPTH: 1 # No need to clone with the whole history
+env: 
+    CIRRUS_CLONE_DEPTH: 1 
     CIRRUS_WORKING_DIR: "/tmp/ci" # Where to clone the aosp-builder repo
 
     # For rclone with google drive or any cloud! After first commit pushing, login to https://cirrus-ci.com , click top left corner 3 dot menu, click repository(yourname/aosp-builder) > Repository Settings > Secured Variables > enter content of ~/.config/rclone/rclone.conf (from pc where you setup rclone) > ENCRYPT, copy that ENCRYPTED hash
@@ -7,19 +7,23 @@ env: # Environment variables to pass to all tasks
     rclone_config: "ENCRYPTED[80a584ece8a4f07bbfaffd61684a0a427f647ae547b69abe5e41e66b53c96ae83c76f957084f03517042f55b5684ac40]"
     
 task:
-    name: aosp # Project name
-    timeout_in: 120m # Otherwise it will timeout at 60m automatically, 120m highest in free account
+    name: aosp 
+    timeout_in: 120m 
     container:
-      image: apon77/aosp:latest # It has built-in setup environment + repo, aria2, rclone, pigz, username ci, and email ci@ci.ci [You can use your own docker image if you want, or you can use this one too!]
-      cpu: 8  #8 or less cpu for dummy build, 8 cpu for the final build, 8cpu highest for free accounts. Don't try to use more than 8cpu as free user, you may get blocked by ci.
-      memory: 32G # So that we can have ram when needed, 32G highest
-    download_ccache_background_script: # To download ccache in background
-      - ./download_ccache # Ccache download script
-    sync_script: # To sync source
-      - ./sync # Source sync script
-    monitor_background_script: # To monitor ccache and machine status every minute, runs in background
-      - ./monitor # Monitor script
-    build_script: # Actual build script foreground
-      - ./build # Build script to run
-    upload_ccache_script: # Upload ccache to cloud foreground
-      - ./upload_ccache # Ccache uploading script
+      image: apon77/aosp:latest 
+      cpu: 8  
+      memory: 32G 
+    download_ccache_background_script: 
+      - #./download_ccache_fluid
+      - ./download_ccache_hycon 
+    sync_script: 
+      - #./sync_fluid
+      - ./scnc_hycon
+    monitor_background_script: 
+      - ./monitor 
+    build_script: 
+      - #./build_fluid
+      - ./build_hycon
+    upload_ccache_script: 
+      - #./upload_ccache_fluid
+      - ./upload_ccache_hycon
