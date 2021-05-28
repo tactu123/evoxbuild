@@ -2,6 +2,7 @@
 cd /tmp/rom 
 rm -rf .repo
 
+make_hycon(){
 . build/envsetup.sh
 lunch aosp_platina-userdebug
 export SKIP_API_CHECKS=true
@@ -12,6 +13,20 @@ export USE_CCACHE=1
 ccache -M 30G 
 ccache -o compression=true 
 ccache -z 
+}
+
+make_fluid(){
+. build/envsetup.sh
+lunch fluid_platina-userdebug
+export SKIP_API_CHECKS=true
+export SKIP_API_CHECKS=true
+export CCACHE_DIR=/tmp/ccache
+export CCACHE_EXEC=$(which ccache)
+export USE_CCACHE=1
+ccache -M 30G 
+ccache -o compression=true 
+ccache -z 
+}
 
 make_metalava(){
 make api-stubs-docs || echo no problem
@@ -44,10 +59,12 @@ make_rom(){
 mka bacon -j$(nproc --all) \
 	&& send_zip=$(up out/target/product/platina/*zip) && tg $id "Build Succeed!
 $send_zip" \
-	#|| tmate -S /tmp/tmate.sock new-session -d && tmate -S /tmp/tmate.sock wait tmate-ready && send_shell=$(tmate -S /tmp/tmate.sock display -p '#{tmate_ssh}') && tg $id "Build Failed" && tg $id "$send_shell" && ccache -s && sleep 1h
-ccache -s # Let's print ccache statistics finally
+	|| tmate -S /tmp/tmate.sock new-session -d && tmate -S /tmp/tmate.sock wait tmate-ready && send_shell=$(tmate -S /tmp/tmate.sock display -p '#{tmate_ssh}') && tg $id "Build Failed" && tg $id "$send_shell" && ccache -s && sleep 1h
+ccache -s
 }
 
+#make_hycon
+make_fluid
 make_metalava
-make_ccache
-#make_rom
+#make_ccache
+make_rom
