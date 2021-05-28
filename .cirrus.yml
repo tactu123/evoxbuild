@@ -13,17 +13,13 @@ task:
       image: apon77/aosp:latest 
       cpu: 8  
       memory: 32G 
-    download_ccache_background_script: 
-      - #./download_ccache_fluid
-      - ./download_ccache_hycon 
-    sync_script: 
-      - #./sync_fluid
-      - ./scnc_hycon
+    download_ccache_background_script:
+      - ./download_ccache
+    sync_script:
+      - ./scnc
     monitor_background_script: 
       - ./monitor 
-    build_script: 
-      - #./build_fluid
-      - ./build_hycon
-    upload_ccache_script: 
-      - #./upload_ccache_fluid
-      - ./upload_ccache_hycon
+    build_script:
+      - ./build
+    upload_ccache_script:
+      - ./upload_ccache

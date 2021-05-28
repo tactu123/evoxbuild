@@ -3,22 +3,9 @@
 mkdir -p /tmp/rom
 cd /tmp/rom
 
-repo_hycon(){
-	repo init --no-repo-verify --depth=1 -u https://github.com/HyconOS/manifest -b eleven -g default,-device,-mips,-darwin,-notdefault
-	git clone https://github.com/D4rkKnight21/local_manifest.git -b hycon --depth=1 .repo/local_manifests
-}
 
-repo_fluid(){
-	repo init --no-repo-verify --depth=1 -u https://github.com/Project-Fluid/manifest -b fluid-11 -g default,-device,-mips,-darwin,-notdefault
-	git clone https://github.com/D4rkKnight21/local_manifest.git -b fluid --depth=1 .repo/local_manifests
-}
-	
-repo_sync(){
-	git config --global user.name "D4rkKnight21"
-	git config --global user.email "yusuff8621@gmail.com"
-	repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j$(nproc --all) || repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j8
-}
-
-#repo_hycon
-repo_fluid
-repo_sync
+repo init --no-repo-verify --depth=1 -u https://github.com/HyconOS/manifest -b eleven -g default,-device,-mips,-darwin,-notdefault
+git clone https://github.com/D4rkKnight21/local_manifest.git -b hycon --depth=1 .repo/local_manifests
+git config --global user.name "D4rkKnight21"
+git config --global user.email "yusuff8621@gmail.com"
+repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j$(nproc --all) || repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j8
