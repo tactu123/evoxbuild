@@ -16,7 +16,7 @@ task:
     download_ccache_background_script:
       - ./download_ccache
     sync_script:
-      - ./scnc
+      - ./sync
     monitor_background_script: 
       - ./monitor 
     build_script:
