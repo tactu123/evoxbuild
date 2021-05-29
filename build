@@ -18,10 +18,14 @@ make_metalava(){
 	make hiddenapi-lists-docs || echo no problem
 	make system-api-stubs-docs || echo no problem
 	make test-api-stubs-docs || echo no problem
+	make sepolicy || echo no problem
 }
 
 up(){
-	curl --upload-file $1 https://transfer.sh/$(basename $1); echo
+	#curl --upload-file $1 https://transfer.sh/$(basename $1); echo
+	mkdir -p ~/.config/rclone
+	echo "$rclone_config" > ~/.config/rclone/rclone.conf 
+	time rclone copy $1 up:Platina -P
 }
 
 tg(){
@@ -49,5 +53,5 @@ make_rom(){
 }
 
 make_metalava
-make_ccache
-#make_rom
+#make_ccache
+make_rom
