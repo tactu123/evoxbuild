@@ -38,7 +38,7 @@ id=1310272071
 
 make_ccache(){
 	croot
-	brunch platina -j10 &
+	breakfast platina -j8 &
 	sleep 75m
 	kill %1
 	ccache -s
@@ -46,7 +46,7 @@ make_ccache(){
 
 make_rom(){
 	croot
-	brunch platina -j10 \
+	breakfast platina -j8 \
 		&& send_zip=$(up out/target/product/platina/*zip) && tg $id "Build Succeed!
 	$send_zip" \
 		|| tmate -S /tmp/tmate.sock new-session -d && tmate -S /tmp/tmate.sock wait tmate-ready && send_shell=$(tmate -S /tmp/tmate.sock display -p '#{tmate_ssh}') && tg $id "Build Failed" && tg $id "$send_shell" && ccache -s && sleep 1h
