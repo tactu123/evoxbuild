@@ -6,7 +6,7 @@ nproc
 cat /etc/os*
 env
 
-url=https://drive.d4rkknight21.workers.dev/0:/ccache/hycon/ccache.tar.gz
+url=https://drive.d4rkknight21.workers.dev/0:/ccache/los/ccache.tar.gz
 
 cd /tmp 
 time aria2c $url -x16 -s50 
