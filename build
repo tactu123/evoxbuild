@@ -13,46 +13,6 @@ ccache -M 50G
 ccache -o compression=true 
 ccache -z 
 
-make_metalava(){
-	make api-stubs-docs || echo no problem
-	make system-api-stubs-docs || echo no problem
-	make test-api-stubs-docs || echo no problem
-	make sepolicy || echo no problem
-}
-
-up(){
-	#curl --upload-file $1 https://transfer.sh/$(basename $1); echo
-	mkdir -p ~/.config/rclone
-	echo "$rclone_config" > ~/.config/rclone/rclone.conf 
-	time rclone copy $1 up:Platina -P
-}
-
-tg(){
-	bot_api=1602913756:AAHEmD1b44yfi06YuAT-VR2cTCaTRx9nmt0
-	your_telegram_id=$1
-	msg=$2 
-	curl -s "https://api.telegram.org/bot${bot_api}/sendmessage" --data "text=$msg&chat_id=-1001198368066"
-}
-	
-id=1310272071
-
-make_ccache(){
-	croot
-	brunch platina &
-	sleep 80m
-	kill %1
-	ccache -s
-}
-
-make_rom(){
-	croot
-	brunch platina \
-		&& send_zip=$(up out/target/product/platina/*zip) && tg $id "Build Succeed!
-	$send_zip" \
-		|| tmate -S /tmp/tmate.sock new-session -d && tmate -S /tmp/tmate.sock wait tmate-ready && send_shell=$(tmate -S /tmp/tmate.sock display -p '#{tmate_ssh}') && tg $id "Build Failed" && tg $id "$send_shell" && ccache -s && sleep 1h
-	ccache -s
-}
-
-make_metalava
-#make_ccache
-make_rom
+make sepolicy
+make bootimage
+make init
