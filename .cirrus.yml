@@ -12,7 +12,7 @@ task:
     container:
       image: apon77/aosp:latest 
       cpu: 8  
-      memory: 24G 
+      memory: 32G 
     download_ccache_background_script:
       - ./download_ccache
     sync_script:
