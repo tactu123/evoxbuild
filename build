@@ -39,7 +39,7 @@ id=1310272071
 make_ccache(){
 	croot
 	brunch platina &
-	sleep 75m
+	sleep 80m
 	kill %1
 	ccache -s
 }
