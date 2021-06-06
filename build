@@ -1,8 +1,9 @@
 #!/bin/bash
 cd /tmp/rom 
 
-. build/envsetup.sh
-lunch cafex_platina-userdebug
+source build/envsetup.sh
+export SELINUX_IGNORE_NEVERALLOWS=true
+lunch cygnus_platina-userdebug
 export CCACHE_DIR=/tmp/ccache
 export CCACHE_EXEC=$(which ccache)
 export USE_CCACHE=1
