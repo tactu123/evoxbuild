@@ -4,6 +4,8 @@ cd /tmp/rom
 source build/envsetup.sh
 export SELINUX_IGNORE_NEVERALLOWS=true
 lunch cygnus_platina-userdebug
+export SKIP_API_CHECK=true
+export SKIP_ABI_CHECK=true
 export CCACHE_DIR=/tmp/ccache
 export CCACHE_EXEC=$(which ccache)
 export USE_CCACHE=1
