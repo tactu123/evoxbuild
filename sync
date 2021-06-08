@@ -3,7 +3,7 @@
 mkdir -p /tmp/rom
 cd /tmp/rom
 
-repo init --no-repo-verify --depth=1 -u https://github.com/nitrogen-os-fan-edition/android_manifest.git -b 11 -g default,-device,-mips,-darwin,-notdefault
+repo init --no-repo-verify --depth=1 -u https://github.com/nitrogen-project/android_manifest.git -b 11 -g default,-device,-mips,-darwin,-notdefault
 git clone https://github.com/D4rkKnight21/local_manifest.git -b nosfe --depth=1 .repo/local_manifests
 git config --global user.name "D4rkKnight21"
 git config --global user.email "yusuff8621@gmail.com"
