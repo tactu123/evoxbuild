@@ -1,7 +1,7 @@
 #!/bin/bash
 cd /tmp/rom 
 
-source build/envsetup.sh
+. build/envsetup.sh
 # export SELINUX_IGNORE_NEVERALLOWS=true
 breakfast platina
 export SKIP_API_CHECK=true
