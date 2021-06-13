@@ -1,3 +1,17 @@
+CHATID=-1001289488472
+API_BOT=1602913756:AAHEmD1b44yfi06YuAT-VR2cTCaTRx9nmt0
+# Telgram env setup
+export BOT_MSG_URL="https://api.telegram.org/bot$API_BOT/sendMessage"
+export BOT_BUILD_URL="https://api.telegram.org/bot$API_BOT/sendDocument"
+
+tg_post_msg() {
+ curl -s -X POST "$BOT_MSG_URL" -d chat_id="$2" \
+ -d "parse_mode=html" \
+ -d text="$1"
+}
+
+tg_post_msg "<b>Starting sync</b>" "$CHATID"
+
 #!/bin/bash
 
 mkdir -p /tmp/rom
@@ -17,3 +31,11 @@ repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync 
 #git clone https://github.com/LineageOS/android_hardware_qcom_audio.git -b lineage-18.1-caf-msm8998 --depth=1 vendor/qcom/opensource/audio-hal/primary-hal
 #git clone https://github.com/LineageOS/android_hardware_qcom_media.git -b lineage-18.1-caf-msm8998 --depth=1 hardware/qcom/media
 #git clone https://github.com/LineageOS/android_hardware_qcom_display.git -b lineage-18.1-caf-msm8998 --depth=1 hardware/qcom/display
+
+tg_post_msg() {
+ curl -s -X POST "$BOT_MSG_URL" -d chat_id="$2" \
+ -d "parse_mode=html" \
+ -d text="$1"
+}
+
+tg_post_msg "<b>SYNC SUCCESSFUL</b>" "$CHATID"
