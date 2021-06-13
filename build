@@ -10,6 +10,8 @@ tg_post_msg() {
 
 tg_post_msg "<b>Starting Build</b>" "$CHATID"
 
+LOG_FILE="$OUT/error.log" # Debug Mode Logs
+
 #!/bin/bash
 cd /tmp/rom 
 
@@ -25,9 +27,13 @@ export USE_CCACHE=1
 ccache -M 50G 
 ccache -o compression=true 
 ccache -z 
-
-
+export TZ=Asia/Jakarta
 
 make sepolicy
 make bootimage
-make init
+make init | tee error.log
+
+tg_post_msg "<b>Build Completed</b>%0A%0A<b> "$CHATID"
+ else
+  tg_post_msg "<b>Build Failed, check cirrus console</b>Link : </b> <code>"$LOG_FILE"</code>" "$CHATID"
+ fi
