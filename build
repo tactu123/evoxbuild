@@ -31,18 +31,7 @@ export TZ=Asia/Jakarta
 
 make sepolicy
      tg_post_msg "<b>Make sepolicy completed</b>%0A%0A<b> "$CHATID"
-      else
-     tg_post_msg "<b>Make sepolicy Failed, check cirrus console</b>" "$CHATID"
-    fi
-
 make bootimage
      tg_post_msg "<b>Make Bootimage Completed</b>%0A%0A<b> "$CHATID"
-      else
-     tg_post_msg "<b>Make Bootimage Failed, check cirrus console</b> "$CHATID"
-    fi
-
 make init
       tg_post_msg "<b>Make Init Completed</b>%0A%0A<b> "$CHATID"
-       else
-     tg_post_msg "<b>Make Init Failed, check cirrus console</b> "$CHATID"
-    fi
