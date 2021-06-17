@@ -31,11 +31,30 @@ ccache -o compression=true
 ccache -z 
 export TZ=Asia/Jakarta
 
-make sepolicy
-make bootimage
-make init | tee error.log
+make_sepolicy(){
+     make sepolicy | tee error.log
+     tg_post_msg "<b>Make sepolicy completed</b>%0A%0A<b> "$CHATID"
+      else
+     tg_post_msg "<b>Make sepolicy Failed, check cirrus console</b>Link : </b> <code>"$LOG_FILE"</code>" "$CHATID"
+    fi
+}
 
-tg_post_msg "<b>Build Completed</b>%0A%0A<b> "$CHATID"
- else
-  tg_post_msg "<b>Build Failed, check cirrus console</b>Link : </b> <code>"$LOG_FILE"</code>" "$CHATID"
- fi
+make_bootimage(){
+     make bootimage | tee error.log
+     tg_post_msg "<b>Make Bootimage Completed</b>%0A%0A<b> "$CHATID"
+      else
+     tg_post_msg "<b>Make Bootimage Failed, check cirrus console</b>Link : </b> <code>"$LOG_FILE"</code>" "$CHATID"
+    fi
+}
+
+make_init(){
+      make init | tee error.log
+      tg_post_msg "<b>Make Init Completed</b>%0A%0A<b> "$CHATID"
+       else
+     tg_post_msg "<b>Make Init Failed, check cirrus console</b>Link : </b> <code>"$LOG_FILE"</code>" "$CHATID"
+    fi
+}
+
+make_sepolicy
+make_bootimage
+make_init
