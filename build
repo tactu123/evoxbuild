@@ -30,8 +30,7 @@ ccache -z
 export TZ=Asia/Jakarta
 
 make sepolicy
-     tg_post_msg "<b>Make sepolicy completed</b>%0A%0A<b> "$CHATID"
 make bootimage
-     tg_post_msg "<b>Make Bootimage Completed</b>%0A%0A<b> "$CHATID"
 make init
-      tg_post_msg "<b>Make Init Completed</b>%0A%0A<b> "$CHATID"
+
+tg_post_msg "<b>Build Success</b>" "$CHATID"
