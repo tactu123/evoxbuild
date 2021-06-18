@@ -1,5 +1,3 @@
-CHATID=-1001289488472
-API_BOT=1602913756:AAHEmD1b44yfi06YuAT-VR2cTCaTRx9nmt0
 # Telgram env setup
 export BOT_MSG_URL="https://api.telegram.org/bot$API_BOT/sendMessage"
 export BOT_BUILD_URL="https://api.telegram.org/bot$API_BOT/sendDocument"
@@ -10,23 +8,15 @@ tg_post_msg() {
  -d text="$1"
 }
 
-tg_post_msg "<b>Starting sync</b>" "$CHATID"
+tg_post_msg "<b>Starting sync "$MANIFEST" ""$BRANCH" </b>" "$CHATID"
 
 #!/bin/bash
 
 mkdir -p /tmp/rom
 cd /tmp/rom
 
-repo init --no-repo-verify --depth=1 -u https://github.com/Komodo-OS-Rom/manifest -b 11 -g default,-device,-mips,-darwin,-notdefault
-git clone https://github.com/D4rkKnight21/local_manifest.git -b komodo --depth=1 .repo/local_manifests
+repo init --no-repo-verify --depth=1 -u "$MANIFEST" -b 11 -g default,-device,-mips,-darwin,-notdefault
+git clone "$LOCAL_MANIFEST" -b "$BLOCAL" --depth=1 .repo/local_manifests
 git config --global user.name "D4rkKnight21"
 git config --global user.email "yusuff8621@gmail.com"
 repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j$(nproc --all) || repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j$(nproc --all)
-
-tg_post_msg() {
- curl -s -X POST "$BOT_MSG_URL" -d chat_id="$2" \
- -d "parse_mode=html" \
- -d text="$1"
-}
-
-tg_post_msg "<b>SYNC SUCCESSFUL</b>" "$CHATID"

@@ -1,5 +1,3 @@
-CHATID=-1001289488472
-API_BOT=1602913756:AAHEmD1b44yfi06YuAT-VR2cTCaTRx9nmt0
 # Telgram env setup
 export BOT_MSG_URL="https://api.telegram.org/bot$API_BOT/sendMessage"
 export BOT_BUILD_URL="https://api.telegram.org/bot$API_BOT/sendDocument"
@@ -10,7 +8,7 @@ tg_post_msg() {
  -d text="$1"
 }
 
-tg_post_msg "<b>Starting Build</b>" "$CHATID"
+tg_post_msg "<b>Starting Build "$MANIFEST" "$BRANCH" </b>" "$CHATID"
 
 #!/bin/bash
 cd /tmp/rom 
@@ -33,4 +31,4 @@ make sepolicy
 make bootimage
 make init
 
-tg_post_msg "<b>Build Success</b>" "$CHATID"
+tg_post_msg "<b>Build Success "$MANIFEST" "$BRANCH" </b>" "$CHATID"
