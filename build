@@ -13,12 +13,11 @@ tg_post_msg "<b>Starting Build "$MANIFEST" "$BRANCH" </b>" "$CHATID"
 #!/bin/bash
 cd /tmp/rom 
 
-. build/envsetup.sh
+source build/envsetup.sh
 export SELINUX_IGNORE_NEVERALLOWS=true
-lunch komodo_platina-userdebug
+lunch dot_platina-userdebug
 export SKIP_API_CHECK=true
 export SKIP_ABI_CHECK=true
-export ALLOW_MISSING_DEPENDENCIES=true
 export CCACHE_DIR=/tmp/ccache
 export CCACHE_EXEC=$(which ccache)
 export USE_CCACHE=1
