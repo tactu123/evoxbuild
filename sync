@@ -19,5 +19,4 @@ repo init --no-repo-verify --depth=1 -u "$MANIFEST" -b "$BRANCH" -g default,-dev
 git clone "$LOCAL_MANIFEST" -b "$BLOCAL" --depth=1 .repo/local_manifests
 git config --global user.name "D4rkKnight21"
 git config --global user.email "yusuff8621@gmail.com"
-repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
-#repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j$(nproc --all) || repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j$(nproc --all)
+repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j$(nproc --all) || repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j$(nproc --all)
