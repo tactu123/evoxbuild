@@ -8,7 +8,7 @@ tg_post_msg() {
  -d text="$1"
 }
 
-tg_post_msg "<b>Starting sync "$MANIFEST" ""$BRANCH" </b>" "$CHATID"
+tg_post_msg "<b>Starting sync "$MANIFEST" "$BRANCH" </b>" "$CHATID"
 
 #!/bin/bash
 
