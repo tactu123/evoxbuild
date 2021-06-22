@@ -15,7 +15,7 @@ tg_post_msg "<b>Starting sync "$MANIFEST" "$BRANCH" </b>" "$CHATID"
 mkdir -p /tmp/rom
 cd /tmp/rom
 
-repo init --no-repo-verify --depth=1 -u "$MANIFEST" -b 11 -g default,-device,-mips,-darwin,-notdefault
+repo init --no-repo-verify --depth=1 -u "$MANIFEST" -b "$BRANCH" -g default,-device,-mips,-darwin,-notdefault
 git clone "$LOCAL_MANIFEST" -b "$BLOCAL" --depth=1 .repo/local_manifests
 git config --global user.name "D4rkKnight21"
 git config --global user.email "yusuff8621@gmail.com"
