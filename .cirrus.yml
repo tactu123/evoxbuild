@@ -10,7 +10,7 @@ env:
     MANIFEST: "https://github.com/RevengeOS/android_manifest"
     BRANCH: "r11.0"
     LOCAL_MANIFEST: "https://github.com/D4rkKnight21/local_manifest.git"
-    BLOCAL: "revengeos"
+    BLOCAL: "ros"
     
 task:
     name: test repo
