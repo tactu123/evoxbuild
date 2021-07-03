@@ -8,13 +8,13 @@ tg_post_msg() {
  -d text="$1"
 }
 
-tg_post_msg "<b>Starting Build "$MANIFEST" "$BRANCH" </b>" "$CHATID"
+tg_post_msg "<b>Starting Test Repo</b>" "$CHATID"
 
 #!/bin/bash
 cd /tmp/rom 
 
-source build/envsetup.sh
-lunch dotfe_platina-userdebug
+. build/envsetup.sh
+lunch cafex_platina-userdebug
 export CCACHE_DIR=/tmp/ccache
 export CCACHE_EXEC=$(which ccache)
 export USE_CCACHE=1
@@ -27,4 +27,4 @@ make sepolicy
 make bootimage
 make init
 
-tg_post_msg "<b>Build Success "$MANIFEST" "$BRANCH" </b>" "$CHATID"
+tg_post_msg "Test Repo Success https://cirrus-ci.com/build/$CIRRUS_BUILD_ID" "$CHATID"
