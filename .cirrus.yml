@@ -7,13 +7,13 @@ env:
     API_BOT: "ENCRYPTED[1d1443b615d49ae8e5b038ab4e7c81f7d312456d9dae38df5ace25b8ebc940061404653b6e1838a4f139d0f972491282]"
     CHATID: "ENCRYPTED[e5ec4d37c73cfe40b3c496a96a01f51a2c681ff48b5c895bae34a4827755fd2fed0e844b67ba00e505716e8f249e6a42]"
     
-    MANIFEST: "https://github.com/CAF-Extended/manifest"
-    BRANCH: "11.0"
-    LOCAL_MANIFEST: "https://github.com/D4rkKnight21/local_manifest.git"
-    BLOCAL: "cafex"
+    MANIFEST: "https://github.com/Evolution-X/manifest"
+    BRANCH: "u"
+    LOCAL_MANIFEST: "https://github.com/ivanmeler/local_manifests.git"
+    BLOCAL: "dreamlte"
     
 task:
-    name: test repo
+    name: test build evo x
     timeout_in: 60m 
     container:
       image: apon77/aosp:latest 
